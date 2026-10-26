@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F8F6F0">
+  <title>تفاصيل المشروع | أسامة رامي</title>
+  <meta name="description" content="استعرض صور مشاريع الشعارات والهويات البصرية.">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .project-detail {
+      padding-top: 45px;
+      padding-bottom: 80px;
+    }
+
+    .project-back {
+      display: inline-block;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project-detail-header {
+      margin-bottom: 32px;
+    }
+
+    .project-detail-header h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.7;
+      margin: 12px 0;
+    }
+
+    .project-detail-header p {
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .project-detail-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-detail-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--card);
+    }
+
+    .gallery-message {
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    @media (max-width: 600px) {
+      .project-detail-gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="project-detail section-shell">
+    <a class="project-back" href="branding.html">
+      ← العودة إلى مشاريع الشعارات
+    </a>
+
+    <header class="project-detail-header">
+      <span class="eyebrow">VISUAL IDENTITY</span>
+      <h1 id="projectTitle">جارٍ تحميل المشروع...</h1>
+      <p id="projectDescription"></p>
+    </header>
+
+    <section
+      class="project-detail-gallery"
+      id="projectGallery"
+      aria-label="صور المشروع"
+    ></section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get("id");
+    const gallery = document.getElementById("projectGallery");
+    const titleElement = document.getElementById("projectTitle");
+    const descriptionElement =
+      document.getElementById("projectDescription");
+
+    fetch("../projects.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("تعذر تحميل البيانات");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const project = data.projects.find(
+          item =>
+            item.id === projectId &&
+            item.category === "branding"
+        );
+
+        if (!project) {
+          throw new Error("المشروع غير موجود");
+        }
+
+        document.title = project.titleAr + " | أسامة رامي";
+        titleElement.textContent = project.titleAr;
+        descriptionElement.textContent =
+          project.descriptionAr || "";
+
+        gallery.replaceChildren();
+
+        project.images.forEach((path, index) => {
+          const image = document.createElement("img");
+          image.src = "../" + path;
+          image.alt = "صورة من المشروع " + (index + 1);
+          image.loading = "lazy";
+          gallery.appendChild(image);
+        });
+      })
+      .catch(() => {
+        titleElement.textContent = "تعذر عرض المشروع";
+
+        const message = document.createElement("p");
+        message.className = "gallery-message";
+        message.textContent =
+          "تأكد من رابط المشروع وبياناته ومسارات الصور في projects.json.";
+
+        gallery.replaceChildren(message);
+      });
+  </script>
+</body>
+</html>
