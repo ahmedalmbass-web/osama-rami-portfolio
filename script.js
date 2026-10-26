@@ -1,224 +1,123 @@
+
 /* OSAMA RAMI — PORTFOLIO INTERACTIONS */
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
 
   // Mobile navigation
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
+  const menuToggle = document.querySelector("#menuToggle");
+  const nav = document.querySelector("#mainNav");
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
+      const isOpen = nav.classList.toggle("open");
 
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "✕" : "☰";
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "إغلاق القائمة" : "فتح القائمة"
+      );
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
+    nav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
+        nav.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-label", "فتح القائمة");
       });
     });
   }
 
-  // Light and dark theme
-  const themeToggle = document.querySelector("#theme-toggle");
+  // Light / dark theme
+  const themeToggle = document.querySelector("#themeToggle");
 
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       body.classList.toggle("dark-theme");
 
-      const darkMode = body.classList.contains("dark-theme");
-
-      themeToggle.textContent = darkMode ? "☀" : "☾";
+      const isDark = body.classList.contains("dark-theme");
+      themeToggle.innerHTML = isDark ? "☾" : "☼";
       themeToggle.setAttribute(
         "aria-label",
-        darkMode ? "Switch to light mode" : "Switch to dark mode"
+        isDark ? "تفعيل المظهر الفاتح" : "تفعيل المظهر الداكن"
       );
     });
   }
 
-  // Arabic and English language switching
-  const languageToggle = document.querySelector("#language-toggle");
+  // Arabic / English
+  const languageToggle = document.querySelector("#languageToggle");
 
   function applyLanguage(language) {
     const isArabic = language === "ar";
 
-    body.dir = isArabic ? "rtl" : "ltr";
     body.lang = language;
+    body.dir = isArabic ? "rtl" : "ltr";
+    document.documentElement.lang = language;
+    document.documentElement.dir = body.dir;
 
     document.querySelectorAll("[data-ar][data-en]").forEach((element) => {
-      element.textContent = isArabic
-        ? element.dataset.ar
-        : element.dataset.en;
+      if (element.querySelector("br")) {
+        element.innerHTML = isArabic
+          ? element.dataset.ar
+          : element.dataset.en;
+      } else {
+        element.textContent = isArabic
+          ? element.dataset.ar
+          : element.dataset.en;
+      }
     });
 
-    document.querySelectorAll("[data-ar-placeholder][data-en-placeholder]")
-      .forEach((element) => {
-        element.placeholder = isArabic
-          ? element.dataset.arPlaceholder
-          : element.dataset.enPlaceholder;
-      });
-
     if (languageToggle) {
-      languageToggle.textContent = isArabic ? "EN" : "عربي";
+      const arLabel = languageToggle.querySelector(".lang-ar");
+      const enLabel = languageToggle.querySelector(".lang-en");
+
+      if (arLabel) arLabel.classList.toggle("active", isArabic);
+      if (enLabel) enLabel.classList.toggle("active", !isArabic);
+
       languageToggle.setAttribute(
         "aria-label",
-        isArabic ? "Switch to English" : "التبديل إلى العربية"
+        isArabic ? "Switch language to English" : "التبديل إلى العربية"
       );
     }
-
-    document.documentElement.lang = language;
-    document.documentElement.dir = isArabic ? "rtl" : "ltr";
   }
 
   if (languageToggle) {
     languageToggle.addEventListener("click", () => {
-      const nextLanguage = body.lang === "ar" ? "en" : "ar";
-      applyLanguage(nextLanguage);
+      applyLanguage(body.lang === "ar" ? "en" : "ar");
     });
   }
 
-  // Project filters
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+  // Real contact links
+  const whatsappNumber = "967770893447";
+  const emailAddress = "som770893447.123@gmail.com";
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      filterButtons.forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
+  const contactButton = document.querySelector("#contactButton");
 
-      const filter = button.dataset.filter || "all";
+  if (contactButton) {
+    contactButton.href = `https://wa.me/${whatsappNumber}`;
+    contactButton.target = "_blank";
+    contactButton.rel = "noopener noreferrer";
+  }
 
-      projectCards.forEach((card) => {
-        const category = card.dataset.category || "";
-        const show = filter === "all" || category === filter;
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.href = `mailto:${emailAddress}`;
+    link.textContent = emailAddress;
+  });
 
-        card.hidden = !show;
-      });
+  // Back-to-top links, if present
+  document.querySelectorAll(".back-to-top").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
 
-  // Reveal sections as they enter the viewport
-  const revealElements = document.querySelectorAll(".reveal");
+  // Current year
+  const year = document.querySelector("#currentYear");
 
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
-
-  // Contact form: open WhatsApp with the prepared message
-  const contactForm = document.querySelector(".contact-form");
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const name = contactForm.querySelector('[name="name"]');
-      const email = contactForm.querySelector('[name="email"]');
-      const subject = contactForm.querySelector('[name="subject"]');
-      const message = contactForm.querySelector('[name="message"]');
-
-      const nameValue = name ? name.value.trim() : "";
-      const emailValue = email ? email.value.trim() : "";
-      const subjectValue = subject ? subject.value.trim() : "";
-      const messageValue = message ? message.value.trim() : "";
-
-      const text = [
-        "Hello Osama, I would like to discuss a project.",
-        "",
-        `Name: ${nameValue}`,
-        `Email: ${emailValue}`,
-        `Project: ${subjectValue}`,
-        `Message: ${messageValue}`
-      ].join("\n");
-
-      /*
-       * Replace 967XXXXXXXXX with Osama's real WhatsApp number.
-       * Include the country code, without + or spaces.
-       */
-      const whatsappNumber = "967XXXXXXXXX";
-
-      if (whatsappNumber.includes("X")) {
-        alert(
-          body.lang === "ar"
-            ? "نموذج التواصل جاهز، لكن يجب إضافة رقم واتساب أسامة الحقيقي في ملف script.js أولاً."
-            : "The contact form is ready, but Osama's real WhatsApp number must be added to script.js first."
-        );
-        return;
-      }
-
-      const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(text);
-
-      window.open(whatsappURL, "_blank", "noopener,noreferrer");
-    });
-  }
-
-  // Back to top
-  const backToTop = document.querySelector(".back-to-top");
-
-  if (backToTop) {
-    backToTop.addEventListener("click", (event) => {
-      event.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
-  }
-
-  // Highlight the current navigation section
-  const sections = document.querySelectorAll("main section[id]");
-  const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-  if ("IntersectionObserver" in window && sections.length) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          sectionLinks.forEach((link) => {
-            link.classList.toggle(
-              "active",
-              link.getAttribute("href") === "#" + entry.target.id
-            );
-          });
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px" }
-    );
-
-    sections.forEach((section) => sectionObserver.observe(section));
-  }
-
-  // Current year in the footer
-  document.querySelectorAll("[data-current-year]").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
 
   // Start in Arabic
   applyLanguage("ar");
