@@ -3,130 +3,72 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F8F6F0">
-  <title>مشروع هوية بصرية | أسامة رامي</title>
+  <title>مشروع الهوية البصرية | أسامة رامي</title>
   <meta name="description" content="مشروع من أعمال أسامة رامي في تصميم الشعارات والهويات البصرية.">
   <link rel="stylesheet" href="../style.css">
+
   <style>
-    .project-detail {
-      padding-top: 65px;
-      padding-bottom: 100px;
-    }
-
-    .project-back {
-      display: inline-flex;
-      margin-bottom: 35px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .project-detail-header {
-      max-width: 760px;
-      margin-bottom: 45px;
-    }
-
-    .project-detail-header h1 {
-      margin-bottom: 15px;
-      font-size: clamp(32px, 5vw, 58px);
-      line-height: 1.5;
-    }
-
-    .project-detail-header p {
-      color: var(--muted);
-      line-height: 2.2;
-    }
-
-    .project-detail-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .project-detail-gallery figure {
-      overflow: hidden;
-      background: var(--card);
-    }
-
-    .project-detail-gallery img {
-      display: block;
-      width: 100%;
-      height: auto;
-      min-height: 180px;
-      object-fit: contain;
-    }
-
-    .project-detail-gallery figcaption {
-      padding: 12px 15px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .project-detail-note {
-      margin-top: 25px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    @media (max-width: 600px) {
-      .project-detail-gallery {
-        grid-template-columns: 1fr;
-      }
-    }
+    .project-detail{padding-top:55px;padding-bottom:90px}
+    .project-back{display:inline-block;margin-bottom:30px;color:var(--muted);font-size:13px}
+    .project-detail-header{max-width:760px;margin-bottom:35px}
+    .project-detail-header h1{font-size:clamp(30px,5vw,48px);line-height:1.6;margin-bottom:12px}
+    .project-detail-header p{color:var(--muted);line-height:2}
+    .project-detail-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .project-detail-gallery img{display:block;width:100%;height:auto;align-self:start;background:var(--card)}
+    .gallery-message{color:var(--muted);line-height:2}
+    @media(max-width:600px){.project-detail-gallery{grid-template-columns:1fr;gap:14px}}
   </style>
 </head>
-
 <body>
   <main class="project-detail section-shell">
-    <a class="project-back" href="../index.html#work">
-      ← العودة إلى معرض الأعمال
-    </a>
+    <a class="project-back" href="branding.html">← العودة إلى مشاريع الهويات</a>
 
     <header class="project-detail-header">
       <span class="eyebrow">VISUAL IDENTITY</span>
-      <h1>مشروع هوية بصرية</h1>
-      <p>
-        هنا يظهر وصف المشروع، ثم تُعرض جميع الصور المرتبطة به،
-        مثل الشعار وتطبيقاته المختلفة.
-      </p>
+      <h1 id="projectTitle">مشروع الهوية البصرية الأول</h1>
+      <p id="projectDescription"></p>
     </header>
 
-    
-
-<section class="project-detail-gallery" aria-label="صور المشروع">
-  <figure>
-    <img src="../images/branding/IMG_20261026_212423_791.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212423_820.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212423_829.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_326.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_335.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_450.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_477.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_660.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-  <figure>
-    <img src="../images/branding/IMG_20261026_212424_705.jpg" alt="تصميم من أعمال المصمم" loading="lazy">
-  </figure>
-</section>
-
-
-    <p class="project-detail-note">
-      تُضاف الصور الفعلية لهذا المشروع بعد رفعها إلى مجلد الصور في المستودع.
-    </p>
+    <section class="project-detail-gallery" id="projectGallery" aria-label="صور المشروع">
+      <p class="gallery-message">جارٍ تحميل الصور...</p>
+    </section>
   </main>
+
+  <script>
+    const projectId = "branding-01";
+    const gallery = document.getElementById("projectGallery");
+
+    fetch("../projects.json")
+      .then(response => {
+        if (!response.ok) throw new Error("تعذر تحميل البيانات");
+        return response.json();
+      })
+      .then(data => {
+        const project = data.projects.find(item => item.id === projectId);
+
+        if (!project) throw new Error("المشروع غير موجود");
+
+        document.title = project.titleAr + " | أسامة رامي";
+        document.getElementById("projectTitle").textContent = project.titleAr;
+        document.getElementById("projectDescription").textContent =
+          project.descriptionAr || "";
+
+        gallery.replaceChildren();
+
+        project.images.forEach((path, index) => {
+          const image = document.createElement("img");
+          image.src = "../" + path;
+          image.alt = "صورة من المشروع " + (index + 1);
+          image.loading = "lazy";
+          gallery.appendChild(image);
+        });
+      })
+      .catch(() => {
+        gallery.innerHTML =
+          '<p class="gallery-message">تعذر تحميل صور المشروع. تحقق من ملف projects.json ومسارات الصور.</p>';
+      });
+  </script>
 </body>
 </html>
