@@ -54,6 +54,27 @@
     "images/branding/project-02/IMG_20261026_231317_922.jpg",
     "images/branding/project-02/IMG_20261026_231328_407.jpg"
   ]
+    },
+    {
+  "id": "branding-03",
+  "category": "branding",
+  "titleAr": "مشروع الهوية البصرية الثالث",
+  "titleEn": "Visual Identity Project 03",
+  "descriptionAr": "",
+  "descriptionEn": "",
+  "cover": "images/project-03/IMG_20261026_234048_591.jpg",
+  "images": [
+    "images/project-03/IMG_20261026_234048_591.jpg",
+    "images/project-03/IMG_20261026_234048_722.jpg",
+    "images/project-03/IMG_20261026_234048_762.jpg",
+    "images/project-03/IMG_20261026_234048_765.jpg",
+    "images/project-03/IMG_20261026_234048_849.jpg",
+    "images/project-03/IMG_20261026_234048_870.jpg",
+    "images/project-03/IMG_20261026_234048_871.jpg",
+    "images/project-03/IMG_20261026_234049_020.jpg",
+    "images/project-03/IMG_20261026_234049_091.jpg",
+    "images/project-03/IMG_20261026_234049_122.jpg"
+  ]
     }
   ]
 }
