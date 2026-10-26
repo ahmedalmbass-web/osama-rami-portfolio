@@ -1,4 +1,31 @@
 
 {
-  "projects": []
+  "categories": [
+    {
+      "id": "branding",
+      "titleAr": "الشعارات والهويات البصرية",
+      "titleEn": "Logos & Visual Identity"
+    },
+    {
+      "id": "weddings",
+      "titleAr": "تهاني الأعراس وكروت الزواج",
+      "titleEn": "Wedding Greetings & Invitations"
+    }
+  ],
+  "projects": [
+    {
+      "id": "sample-branding",
+      "category": "branding",
+      "titleAr": "مشروع هوية بصرية",
+      "titleEn": "Visual Identity Project",
+      "descriptionAr": "عرض الشعار والتطبيقات المرتبطة به ضمن مشروع واحد.",
+      "descriptionEn": "A logo and its related brand applications in one project.",
+      "cover": "images/branding/project-01/logo.jpg",
+      "images": [
+        "images/branding/project-01/logo.jpg",
+        "images/branding/project-01/business-card.jpg",
+        "images/branding/project-01/signage.jpg"
+      ]
+    }
+  ]
 }
