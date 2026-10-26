@@ -14,17 +14,23 @@
   ],
   "projects": [
     {
-      "id": "sample-branding",
+      "id": "branding-01",
       "category": "branding",
-      "titleAr": "مشروع هوية بصرية",
-      "titleEn": "Visual Identity Project",
-      "descriptionAr": "عرض الشعار والتطبيقات المرتبطة به ضمن مشروع واحد.",
-      "descriptionEn": "A logo and its related brand applications in one project.",
-      "cover": "images/branding/project-01/logo.jpg",
+      "titleAr": "مشروع الهوية البصرية الأول",
+      "titleEn": "Visual Identity Project 01",
+      "descriptionAr": "",
+      "descriptionEn": "",
+      "cover": "images/branding/IMG_20261026_212423_791.jpg",
       "images": [
-        "images/branding/project-01/logo.jpg",
-        "images/branding/project-01/business-card.jpg",
-        "images/branding/project-01/signage.jpg"
+        "images/branding/IMG_20261026_212423_791.jpg",
+        "images/branding/IMG_20261026_212423_820.jpg",
+        "images/branding/IMG_20261026_212423_829.jpg",
+        "images/branding/IMG_20261026_212424_326.jpg",
+        "images/branding/IMG_20261026_212424_335.jpg",
+        "images/branding/IMG_20261026_212424_450.jpg",
+        "images/branding/IMG_20261026_212424_477.jpg",
+        "images/branding/IMG_20261026_212424_660.jpg",
+        "images/branding/IMG_20261026_212424_705.jpg"
       ]
     }
   ]
