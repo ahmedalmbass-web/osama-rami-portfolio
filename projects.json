@@ -75,6 +75,23 @@
     "images/branding/project-03/IMG_20261026_234049_091.jpg",
     "images/branding/project-03/IMG_20261026_234049_122.jpg"
   ]
+    },
+    {
+  "id": "branding-04",
+  "category": "branding",
+  "titleAr": "مشروع الهوية البصرية الرابع",
+  "titleEn": "Visual Identity Project 04",
+  "descriptionAr": "",
+  "descriptionEn": "",
+  "cover": "images/branding/project-04/IMG_20261027_001410_298.jpg",
+  "images": [
+    "images/branding/project-04/IMG_20261027_001410_298.jpg",
+    "images/branding/project-04/IMG_20261027_001410_542.jpg",
+    "images/branding/project-04/IMG_20261027_001410_581.jpg",
+    "images/branding/project-04/IMG_20261027_001410_688.jpg",
+    "images/branding/project-04/IMG_20261027_001410_882.jpg",
+    "images/branding/project-04/IMG_20261027_001411_044.jpg"
+  ]
     }
   ]
 }
