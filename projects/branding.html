@@ -10,94 +10,25 @@
   <link rel="stylesheet" href="../style.css">
 
   <style>
-    .category-page {
-      padding-top: 55px;
-      padding-bottom: 90px;
-    }
-
-    .category-back {
-      display: inline-block;
-      margin-bottom: 28px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .category-heading {
-      margin-bottom: 35px;
-    }
-
-    .category-heading h1 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.6;
-    }
-
-    .category-heading p {
-      color: var(--muted);
-      line-height: 2;
-    }
-
-    .brand-projects {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px 22px;
-    }
-
-    .brand-project {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      min-width: 0;
-    }
-
-    .brand-project-cover {
-      display: block;
-      overflow: hidden;
-      background: var(--card);
-      aspect-ratio: 4 / 3;
-    }
-
-    .brand-project-cover img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-
-    .brand-project:hover .brand-project-cover img {
-      transform: scale(1.04);
-    }
-
-    .brand-project h2 {
-      font-size: 17px;
-      line-height: 1.8;
-      margin-top: 13px;
-    }
-
-    .project-index {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 5px;
-      direction: ltr;
-      text-align: right;
-    }
-
-    @media (max-width: 600px) {
-      .brand-projects {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-    }
+    .category-page{padding-top:55px;padding-bottom:90px}
+    .category-back{display:inline-block;margin-bottom:28px;color:var(--muted);font-size:13px}
+    .category-heading{margin-bottom:35px}
+    .category-heading h1{font-size:clamp(30px,5vw,48px);line-height:1.6}
+    .category-heading p{color:var(--muted);line-height:2}
+    .brand-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px}
+    .brand-project{display:block;color:inherit;text-decoration:none;min-width:0}
+    .brand-project-cover{display:block;overflow:hidden;background:var(--card);aspect-ratio:4/3}
+    .brand-project-cover img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .brand-project:hover .brand-project-cover img{transform:scale(1.04)}
+    .brand-project h2{font-size:17px;line-height:1.8;margin-top:13px}
+    .project-index{display:block;color:var(--muted);font-size:11px;margin-top:5px;direction:ltr;text-align:right}
+    .empty-message{color:var(--muted);line-height:2}
+    @media(max-width:600px){.brand-projects{grid-template-columns:1fr;gap:25px}}
   </style>
 </head>
-
 <body>
   <main class="category-page section-shell">
-
-    <a class="category-back" href="../index.html#work">
-      ← العودة للرئيسية
-    </a>
+    <a class="category-back" href="../index.html#work">← العودة للرئيسية</a>
 
     <header class="category-heading">
       <span class="eyebrow">BRAND PORTFOLIO</span>
@@ -105,24 +36,57 @@
       <p>مجموعة من مشاريع تصميم الشعارات والهويات البصرية.</p>
     </header>
 
-    <section class="brand-projects" aria-label="مشاريع الشعارات والهويات">
-
-      <!-- المشروع الأول -->
-      <a class="brand-project" href="branding-01.html">
-        <span class="brand-project-cover">
-          <img
-            src="../images/branding/IMG_20261026_212423_791.jpg"
-            alt="صورة واجهة المشروع الأول"
-            loading="lazy">
-        </span>
-        <h2>مشروع الهوية البصرية الأول</h2>
-        <span class="project-index">PROJECT / 001</span>
-      </a>
-
-      <!-- أضف كل مشروع جديد كبطاقة مستقلة هنا -->
-
+    <section class="brand-projects" id="brandProjects" aria-label="مشاريع الشعارات والهويات">
+      <p class="empty-message">جارٍ تحميل المشاريع...</p>
     </section>
-
   </main>
+
+  <script>
+    const projectsContainer = document.getElementById("brandProjects");
+
+    fetch("../projects.json")
+      .then(response => {
+        if (!response.ok) throw new Error("تعذر تحميل المشاريع");
+        return response.json();
+      })
+      .then(data => {
+        const projects = data.projects.filter(project => project.category === "branding");
+        projectsContainer.replaceChildren();
+
+        if (projects.length === 0) {
+          projectsContainer.innerHTML = '<p class="empty-message">لا توجد مشاريع مضافة حاليًا.</p>';
+          return;
+        }
+
+        projects.forEach((project, index) => {
+          const link = document.createElement("a");
+          link.className = "brand-project";
+          link.href = `branding-${String(index + 1).padStart(2, "0")}.html`;
+
+          const cover = document.createElement("span");
+          cover.className = "brand-project-cover";
+
+          const image = document.createElement("img");
+          image.src = "../" + project.cover;
+          image.alt = project.titleAr;
+          image.loading = "lazy";
+
+          cover.appendChild(image);
+
+          const title = document.createElement("h2");
+          title.textContent = project.titleAr;
+
+          const number = document.createElement("span");
+          number.className = "project-index";
+          number.textContent = "PROJECT / " + String(index + 1).padStart(3, "0");
+
+          link.append(cover, title, number);
+          projectsContainer.appendChild(link);
+        });
+      })
+      .catch(() => {
+        projectsContainer.innerHTML = '<p class="empty-message">تعذر تحميل المشاريع. تحقق من ملف projects.json.</p>';
+      });
+  </script>
 </body>
 </html>
