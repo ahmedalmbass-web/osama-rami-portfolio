@@ -32,6 +32,28 @@
         "images/branding/IMG_20261026_212424_660.jpg",
         "images/branding/IMG_20261026_212424_705.jpg"
       ]
+    },
+    {
+  "id": "branding-02",
+  "category": "branding",
+  "titleAr": "مشروع الهوية البصرية الثاني",
+  "titleEn": "Visual Identity Project 02",
+  "descriptionAr": "",
+  "descriptionEn": "",
+  "cover": "images/branding/project-02/IMG_20261026_231317_241.jpg",
+  "images": [
+    "images/branding/project-02/IMG_20261026_231317_241.jpg",
+    "images/branding/project-02/IMG_20261026_231317_256.jpg",
+    "images/branding/project-02/IMG_20261026_231317_474.jpg",
+    "images/branding/project-02/IMG_20261026_231317_482.jpg",
+    "images/branding/project-02/IMG_20261026_231317_580.jpg",
+    "images/branding/project-02/IMG_20261026_231317_730.jpg",
+    "images/branding/project-02/IMG_20261026_231317_786.jpg",
+    "images/branding/project-02/IMG_20261026_231317_807.jpg",
+    "images/branding/project-02/IMG_20261026_231317_913.jpg",
+    "images/branding/project-02/IMG_20261026_231317_922.jpg",
+    "images/branding/project-02/IMG_20261026_231328_407.jpg"
+  ]
     }
   ]
 }
