@@ -119,8 +119,7 @@ body.dark-theme .eyebrow {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  background: color-mix(in srgb, var(--page) 92%, transparent);
-  backdrop-filter: blur(18px);
+  background: var(--page);
   border-bottom: 1px solid var(--line);
   box-sizing: border-box;
 }
@@ -1458,32 +1457,4 @@ body[dir="ltr"] .project-mockup strong {
   z-index: 2;
 }
 
-
-/* Full-width header */
-.site-header {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  box-sizing: border-box;
-}
-
-/* Fix header edge alignment */
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
 
