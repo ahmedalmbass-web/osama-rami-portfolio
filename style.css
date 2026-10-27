@@ -1556,3 +1556,20 @@ body[dir="ltr"] .project-mockup strong {
     height: 350px;
   }
 }
+
+/* Better spacing for About section */
+.about-section {
+  padding-inline: 24px;
+}
+
+@media (max-width: 760px) {
+  .about-section {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-section {
+    padding-inline: 18px;
+  }
+}
