@@ -107,12 +107,14 @@ body.dark-theme .eyebrow {
 
 /* HEADER */
 
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
   min-height: 86px;
-  padding: 0 max(32px, calc((100% - 1180px) / 2));
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,7 +122,9 @@ body.dark-theme .eyebrow {
   background: color-mix(in srgb, var(--page) 92%, transparent);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
+  box-sizing: border-box;
 }
+
 
 .brand,
 .footer-brand {
