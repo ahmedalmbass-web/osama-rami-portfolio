@@ -1,36 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F8F6F0">
   <title>تهاني الأعراس وكروت الزواج | أسامة رامي</title>
-  <meta name="description" content="معرض تصاميم تهاني الأعراس وكروت الزواج للمصمم أسامة رامي.">
+  <meta name="description" content="معرض تهاني الأعراس وتصاميم كروت الزواج من أعمال أسامة رامي.">
   <link rel="stylesheet" href="../style.css">
+
   <style>
-    .category-page{padding-top:55px;padding-bottom:90px}
-    .category-back{display:inline-block;margin-bottom:28px;color:var(--muted)}
-    .category-heading{margin-bottom:35px}
-    .category-heading h1{font-size:clamp(30px,5vw,48px);line-height:1.6}
-    .category-heading p{color:var(--muted);line-height:2}
-    .wedding-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .wedding-gallery img{display:block;width:100%;height:auto;align-self:start;background:var(--card)}
-    @media(max-width:700px){.wedding-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+    .weddings-page {
+      padding-top: 45px;
+      padding-bottom: 80px;
+    }
+
+    .weddings-heading {
+      margin-bottom: 32px;
+    }
+
+    .weddings-heading h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.7;
+      margin: 12px 0;
+    }
+
+    .weddings-heading p {
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .wedding-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .wedding-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--card);
+    }
+
+    .gallery-message {
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    @media (max-width: 600px) {
+      .wedding-gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
   </style>
 </head>
-<body>
-  <main class="category-page section-shell">
-    <a class="category-back" href="../index.html#work">← العودة للرئيسية</a>
 
-    <header class="category-heading">
+<body>
+  <main class="weddings-page section-shell">
+    <a href="../index.html">← العودة إلى الرئيسية</a>
+
+    <header class="weddings-heading">
       <span class="eyebrow">WEDDING DESIGNS</span>
       <h1>تهاني الأعراس وكروت الزواج</h1>
-      <p>معرض تصاميم تهاني الأعراس وكروت الزواج.</p>
+      <p>مجموعة من تصاميم تهاني الأعراس وكروت الزواج.</p>
     </header>
 
-    <section class="wedding-gallery" aria-label="معرض التصاميم">
-      <!-- ستُضاف هنا صور الأعراس الفعلية بعد رفعها إلى GitHub -->
+    <section
+      class="wedding-gallery"
+      id="weddingGallery"
+      aria-label="معرض تهاني الأعراس وكروت الزواج"
+    >
+      <p class="gallery-message">جارٍ تحميل الصور...</p>
     </section>
   </main>
+
+  <script>
+    const images = [
+      "IMG_20261026_221856_694.jpg",
+      "IMG_20261026_221856_819.jpg",
+      "IMG_20261026_221856_833.jpg",
+      "IMG_20261026_221856_932.jpg",
+      "IMG_20261026_221907_734.jpg",
+      "IMG_20261026_221911_095.jpg",
+      "IMG_20261026_221915_084.jpg",
+      "IMG_20261027_200416_144.jpg",
+      "IMG_20261027_200417_980.jpg",
+      "1-o.jpg",
+      "Jgo.jpg"
+    ];
+
+    const gallery = document.getElementById("weddingGallery");
+    gallery.replaceChildren();
+
+    images.forEach((filename, index) => {
+      const image = document.createElement("img");
+      image.src = "../images/weddings/" + filename;
+      image.alt = "تصميم زفاف " + (index + 1);
+      image.loading = "lazy";
+      gallery.appendChild(image);
+    });
+  </script>
 </body>
 </html>
