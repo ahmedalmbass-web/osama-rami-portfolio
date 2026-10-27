@@ -1454,3 +1454,13 @@ body[dir="ltr"] .project-mockup strong {
   z-index: 2;
 }
 
+
+/* Full-width header */
+.site-header {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
