@@ -33,7 +33,9 @@ body {
   background: var(--page);
   color: var(--espresso);
   line-height: 1.8;
-  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  min-width: 0;
   transition: background var(--transition), color var(--transition);
 }
 
