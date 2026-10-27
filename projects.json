@@ -92,6 +92,28 @@
     "images/branding/project-04/IMG_20261027_001410_882.jpg",
     "images/branding/project-04/IMG_20261027_001411_044.jpg"
   ]
+    },
+    {
+  "id": "branding-05",
+  "category": "branding",
+  "titleAr": "مشروع الهوية البصرية الخامس",
+  "titleEn": "Visual Identity Project 05",
+  "descriptionAr": "",
+  "descriptionEn": "",
+  "cover": "images/branding/project-05/IMG_20261027_194513_491.jpg",
+  "images": [
+    "images/branding/project-05/IMG_20261027_194513_491.jpg",
+    "images/branding/project-05/IMG_20261027_194513_500.jpg",
+    "images/branding/project-05/IMG_20261027_194513_546.jpg",
+    "images/branding/project-05/IMG_20261027_194513_557.jpg",
+    "images/branding/project-05/IMG_20261027_194513_745.jpg",
+    "images/branding/project-05/IMG_20261027_194513_890.jpg",
+    "images/branding/project-05/IMG_20261027_194513_906.jpg",
+    "images/branding/project-05/IMG_20261027_194513_968.jpg",
+    "images/branding/project-05/IMG_20261027_194514_319.jpg",
+    "images/branding/project-05/IMG_20261027_194514_426.jpg",
+    "images/branding/project-05/IMG_20261027_194518_019.jpg"
+  ]
     }
   ]
 }
